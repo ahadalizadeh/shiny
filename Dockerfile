@@ -23,7 +23,10 @@ RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION 
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ && \
     chown shiny:shiny /var/lib/shiny-server
 
+RUN apt-get install nano  -y
 EXPOSE 3838
 COPY shiny-server.sh /usr/bin/shiny-server.sh
-COPY apps /srv/shiny-server/ 
+RUN  mkdir -p  /srv/shiny-server/app1
+COPY apps/app1 /srv/shiny-server/app1
+add apps/app1 /srv/shiny-server/app1
 CMD ["/usr/bin/shiny-server.sh"]
