@@ -26,7 +26,11 @@ RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION 
 RUN apt-get install nano  -y
 EXPOSE 3838
 COPY shiny-server.sh /usr/bin/shiny-server.sh
+RUN  mkdir -p  /srv/app1
 RUN  mkdir -p  /srv/shiny-server/app1
-COPY apps/app1 /srv/shiny-server/app1
-add apps/app1 /srv/shiny-server/app1
+RUN  mkdir -p  /srv/shiny-server/app2
+
+COPY /srv/apps/app1 /srv/shiny-server/app1
+COPY /srv/apps/app2 /srv/shiny-server/app2
+
 CMD ["/usr/bin/shiny-server.sh"]
