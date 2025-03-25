@@ -26,6 +26,6 @@ RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION 
 EXPOSE 3838
 
 COPY shiny-server.sh /usr/bin/shiny-server.sh
-cp -R apps/app1 /srv/shiny-server
+cp -R /apps/app1 /srv/shiny-server
 
 CMD ["/usr/bin/shiny-server.sh"]
